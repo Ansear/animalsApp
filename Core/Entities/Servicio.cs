@@ -7,4 +7,5 @@ namespace Core.Entities;
         public string Nombre { get; set; }
         [Required]
         public double Precio { get; set; }
+        public ICollection<Cita> Citas { get; set; }
     }

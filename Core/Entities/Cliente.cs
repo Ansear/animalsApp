@@ -10,5 +10,8 @@ namespace Core.Entities;
         public int Nombre { get; set;}
         [Required]
         public int Email { get; set;}
-        
+        public ClienteDireccion ClienteDireccion { get; set; }
+        public ICollection<ClienteTelefono> ClientesTelefonos { get; set; }
+        public ICollection<Mascota> Mascotas { get; set; }
+        public ICollection<Cita> Citas { get; set; }
     }
