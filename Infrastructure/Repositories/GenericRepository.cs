@@ -16,42 +16,42 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
     public void Add(T entity)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().Add(entity);
     }
 
     public void AddRange(IEnumerable<T> entities)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().AddRange(entities);
     }
 
-    public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+    public virtual IEnumerable<T> Find(Expression<Func<T, bool>> expression)
     {
-        throw new NotImplementedException();
+        return _context.Set<T>().Where(expression);
     }
 
-    public Task<IEnumerable<T>> GetAllAsync()
+    public virtual async Task<IEnumerable<T>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Set<T>().ToListAsync();
     }
 
-    public Task<T> GetByIdAsync(int id)
+    public virtual async Task<T> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Set<T>().FindAsync(id);
     }
 
     public void Remove(T entity)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().Remove(entity);
     }
 
     public void RemoveRange(IEnumerable<T> entities)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().RemoveRange(entities);
     }
 
     public void Update(T entity)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().Update(entity);
     }
 
     public virtual async Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(

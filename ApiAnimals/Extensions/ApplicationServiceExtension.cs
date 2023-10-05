@@ -31,8 +31,8 @@ namespace ApiAnimals.Extensions;
                     new RateLimitRule
                     {
                         Endpoint = "*",
-                        Period = "10s",
-                        Limit = 2
+                        Period = "10s", //Tiempo
+                        Limit = 2 //Cantidad de peticiones segun el tiempo
                     }
                 };
             });

@@ -38,6 +38,6 @@ public class ClienteDireccionConfiguration : IEntityTypeConfiguration<ClienteDir
 
         builder.HasOne(cd => cd.Clientes).WithOne(c => c.ClienteDireccion).HasForeignKey<ClienteDireccion>(cd => cd.IdCliente);
 
-        builder.HasOne(cd => cd.Ciudades).WithOne(c => c.ClienteDireccion).HasForeignKey<ClienteDireccion>(cd => cd.IdCiudad);
+        builder.HasOne(cd => cd.Ciudades).WithOne(city => city.ClienteDireccion).HasForeignKey<ClienteDireccion>(cd => cd.IdCiudad);
     }
 }

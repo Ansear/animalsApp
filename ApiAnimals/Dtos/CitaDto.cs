@@ -10,4 +10,6 @@ namespace ApiAnimals.Dtos;
         public DateTime Fecha { get; set;}
         public TimeOnly Hora{ get; set; }
         public ServicioDto Servicio { get; set; }
+        public ClienteDto Cliente { get; set; }
+        public MascotaDto Mascota { get; set; }
     }
