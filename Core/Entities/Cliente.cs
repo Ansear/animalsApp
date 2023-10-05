@@ -5,11 +5,11 @@ namespace Core.Entities;
     {
 
         [Required]
-        public int Apellidos { get; set;}
+        public string Apellidos { get; set;}
         [Required]
-        public int Nombre { get; set;}
+        public string Nombre { get; set;}
         [Required]
-        public int Email { get; set;}
+        public string Email { get; set;}
         public ClienteDireccion ClienteDireccion { get; set; }
         public ICollection<ClienteTelefono> ClientesTelefonos { get; set; }
         public ICollection<Mascota> Mascotas { get; set; }

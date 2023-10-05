@@ -1,10 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders; 
 
 namespace Infrastructure.Data.Configuration;
-    public class ServicioConfiguration
+public class ServicioConfiguration : IEntityTypeConfiguration<Servicio>
+{
+    public void Configure(EntityTypeBuilder<Servicio> builder)
     {
-        
+        builder.ToTable("Servicio");
+
+        builder.HasKey(s => s.Id);
+        builder.Property(s => s.Id);
+
+        builder.Property(s => s.Nombre).IsRequired();
+
+        builder.Property(s => s.Precio).IsRequired();
     }
+}

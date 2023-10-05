@@ -4,7 +4,7 @@ namespace Core.Entities;
     public class ClienteDireccion : BaseEntity
     {
         public int IdCliente { get; set; }
-        public Cliente Cliente { get; set; }
+        public Cliente Clientes { get; set; }
         public string TipoDeVia { get; set; }
         public int NumeroPri { get; set; }
         public string Letra { get; set; }
@@ -18,6 +18,6 @@ namespace Core.Entities;
         public string Complemento { get; set; }
         public string CodigoPostal { get; set; }
         [Required]
-        public string IdCiudad { get; set; }
-        public Ciudad Ciudad { get; set; }
+        public int IdCiudad { get; set; }
+        public Ciudad Ciudades { get; set; }
     }

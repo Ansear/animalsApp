@@ -10,11 +10,11 @@ namespace Core.Entities;
         public TimeSpan Hora { get; set; }
         [Required]
         public int IdCliente { get; set; }
-        public Cliente Cliente { get; set; }
+        public Cliente Clientes { get; set; }
         [Required]
         public int IdMascota { get; set; }
-        public Mascota Mascota { get; set; }
+        public Mascota Mascotas { get; set; }
         [Required]
         public int ServicioId { get; set; }
-        public Servicio Servicio { get; set; }
+        public Servicio Servicios { get; set; }
     }
