@@ -25,10 +25,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_citas == null)
-            {
-                _citas = new CitaRepository(_context);
-            }
+            _citas ??= new CitaRepository(_context); //Metodo abreviado segun la documentacion https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/operators/null-coalescing-operator, seccion ejemplos cuarto punto
             return _citas;
         }
     }
@@ -37,10 +34,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get
         {
-            if(_ciudades == null)
-            {
-                _ciudades = new CiudadRepository(_context);
-            }
+            _ciudades ??= new CiudadRepository(_context);
             return _ciudades;
         }
     }
@@ -49,10 +43,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get
         {
-            if(_clientes == null)
-            {
-                _clientes = new ClienteRepository(_context);
-            }
+            _clientes ??= new ClienteRepository(_context);
             return _clientes;
         }
     }
@@ -61,10 +52,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_clienteDireccion == null)
-            {
-                _clienteDireccion = new ClienteDireccionRepository(_context);
-            }
+            _clienteDireccion ??= new ClienteDireccionRepository(_context);
             return _clienteDireccion;
         }
     }
@@ -73,10 +61,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_clienteTelefono == null)
-            {
-                _clienteTelefono = new ClienteTelefonoRepository(_context);
-            }
+            _clienteTelefono ??= new ClienteTelefonoRepository(_context);
             return _clienteTelefono;
         }
     }
@@ -85,10 +70,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_departamentos == null)
-            {
-                _departamentos = new DepartamentoRepository(_context);
-            }
+            _departamentos ??= new DepartamentoRepository(_context);
             return _departamentos;
         }
     }
@@ -97,10 +79,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_mascotas == null)
-            {
-                _mascotas = new MascotaRepository(_context);
-            }
+            _mascotas ??= new MascotaRepository(_context);
             return _mascotas;
         }
     }
@@ -109,10 +88,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_paises == null)
-            {
-                _paises = new PaisRepository(_context);
-            }
+            _paises ??= new PaisRepository(_context);
             return _paises;
         }
     }
@@ -121,10 +97,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_razas == null)
-            {
-                _razas = new RazaRepository(_context);
-            }
+            _razas ??= new RazaRepository(_context);
             return _razas;
         }
     }
@@ -133,10 +106,7 @@ public class UnitOfWork : IUnitOfWork,IDisposable
     {
         get 
         {
-            if(_servicios == null)
-            {
-                _servicios = new ServicioRepository(_context);
-            }
+            _servicios ??= new ServicioRepository(_context);
             return _servicios;
         }
     }
