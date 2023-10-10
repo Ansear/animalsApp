@@ -8,5 +8,5 @@ namespace ApiAnimals.Dtos;
     {
         public int Id { get; set; }
         public string NombreDep { get; set; }  
-        public PaisDto Pais { get; set; } 
+        public int IdPais { get; set;}
     }

@@ -51,6 +51,7 @@ public class DepartamentoController : BaseController
         {
             return BadRequest();
         }
+        departamentoDto.Id = departamento.Id;
         return CreatedAtAction(nameof(Post), new { id = departamentoDto.Id }, departamentoDto);
     }
 

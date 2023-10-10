@@ -52,10 +52,10 @@ public class CiudadController : BaseController
             return BadRequest();
         }
         ciudadDto.Id = ciudad.Id;
-        return CreatedAtAction(nameof(ciudad), new { id = ciudad.Id }, ciudadDto);
+        return CreatedAtAction(nameof(Post), new { id = ciudadDto.Id }, ciudadDto);
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
