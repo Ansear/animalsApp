@@ -5,86 +5,86 @@ using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiAnimals.Controllers;
-public class CitaController : BaseController
+public class ClienteTelefonoController : BaseController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CitaController(IUnitOfWork unitOfWork, IMapper mapper)
+    public ClienteTelefonoController(IUnitOfWork unitOfWork,IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-
+    
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<CitaDto>>> Get()
+    public async Task<ActionResult<IEnumerable<ClienteTelefonoDto>>> Get()
     {
-        var citas = await _unitOfWork.Citas.GetAllAsync();
-        return _mapper.Map<List<CitaDto>>(citas);
+        var clienteT = await _unitOfWork.ClienteTelefonos.GetAllAsync();
+        return _mapper.Map<List<ClienteTelefonoDto>>(clienteT);
     }
 
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<CitaDto>> Get(int id)
+    public async Task<ActionResult<ClienteTelefonoDto>> Get(int id)
     {
-        var cita = await _unitOfWork.Citas.GetByIdAsync(id);
-        if(cita == null)
+        var clit = await _unitOfWork.ClienteTelefonos.GetByIdAsync(id);
+        if(clit == null)
         {
             return NotFound();
         }
-        return _mapper.Map<CitaDto>(cita);
+        return _mapper.Map<ClienteTelefonoDto>(clit);
     }
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Cita>> Post([FromBody] CitaDto citaDto)
+    public async Task<ActionResult<ClienteTelefono>> Post([FromBody] ClienteTelefonoDto cliTDto)
     {
-        var cita = _mapper.Map<Cita>(citaDto);
-        _unitOfWork.Citas.Add(cita);
+        var cliente =  _mapper.Map<ClienteTelefono>(cliTDto);
+        _unitOfWork.ClienteTelefonos.Add(cliente);
         await _unitOfWork.SaveAsync();
-        if(cita == null)
+        if(cliente == null)
         {
             return BadRequest();
         }
-        citaDto.Id = cita.Id;
-        return CreatedAtAction(nameof(Post), new {id = citaDto.Id}, citaDto);
+        cliTDto.Id = cliente.Id;
+        return CreatedAtAction(nameof(Post), new {id = cliTDto.Id}, cliTDto);
     }
 
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<CitaDto>> Put(int id, [FromBody] CitaDto citaDto)
+    public async Task<ActionResult<ClienteTelefonoDto>> Put(int id, [FromBody] ClienteTelefonoDto clienTDto)
     {
-        if(citaDto == null)
+        if(clienTDto == null)
             return BadRequest();
-        if(citaDto.Id == 0)
-            citaDto.Id = id;
-        if(citaDto.Id != id)
+        if(clienTDto.Id == 0)
+            clienTDto.Id = id;
+        if(clienTDto.Id != id)
             return NotFound();
-        var cita = _mapper.Map<Cita>(citaDto);
-        _unitOfWork.Citas.Update(cita);
+
+        var clienT = _mapper.Map<ClienteTelefono>(clienTDto);
+        _unitOfWork.ClienteTelefonos.Update(clienT);
         await _unitOfWork.SaveAsync();
-        return citaDto;
+        return clienTDto;
     }
 
     [HttpDelete("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(int id)
     {
-        var cita = await _unitOfWork.Citas.GetByIdAsync(id);
-        if(cita == null)
+        var clienT = await _unitOfWork.ClienteTelefonos.GetByIdAsync(id);
+        if(clienT == null)
         {
             return NotFound();
         }
-        _unitOfWork.Citas.Remove(cita);
+        _unitOfWork.ClienteTelefonos.Remove(clienT);
         await _unitOfWork.SaveAsync();
         return NoContent();
     }
