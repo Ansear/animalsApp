@@ -44,12 +44,13 @@ public class ClienteController : BaseController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Cliente>> Post([FromBody] ClienteDto clienteDto)
     {
-        if(clienteDto == null)
-            return BadRequest();
         var cliente = _mapper.Map<Cliente>(clienteDto);
         _unitOfWork.Clientes.Add(cliente);
         await _unitOfWork.SaveAsync();
-        return CreatedAtAction(nameof(Post), new {id = cliente.Id} , clienteDto);
+        if(clienteDto == null)
+            return BadRequest();
+        clienteDto.Id = cliente.Id;
+        return CreatedAtAction(nameof(Post), new {id = clienteDto.Id} , clienteDto);
     }
 
     [HttpPut("{id}")]

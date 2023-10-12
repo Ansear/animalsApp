@@ -16,4 +16,4 @@ public class CiudadConfiguration : IEntityTypeConfiguration<Ciudad>
 
         builder.HasOne(c => c.Departamentos).WithMany(c => c.Ciudades).HasForeignKey(c => c.IdDep);
     }
-}
+}   

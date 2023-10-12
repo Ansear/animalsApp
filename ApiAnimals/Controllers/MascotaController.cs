@@ -51,6 +51,7 @@ public class MascotaController : BaseController
         {
             return BadRequest();
         }
+        mascotaDto.Id = mascota.Id;
         return CreatedAtAction(nameof(Post), new{id = mascotaDto.Id}, mascotaDto);
     }
 
